@@ -30,7 +30,7 @@ const Competitions = ({
   const renderSidebar = () => {
     return (
       <div>
-      <ul>
+      <ul className='nav'>
         <li>
           <Link to={`/competitions`}>Все годы</Link>
         </li>
@@ -40,6 +40,10 @@ const Competitions = ({
           </li>
         })}
       </ul>
+      <form className={styles.form}>
+        <input type='text' />
+        <button>Найти</button>
+      </form>
     </div>
     )
   }
@@ -47,7 +51,7 @@ const Competitions = ({
   return (
     <div>
       {renderSidebar()}
-      <table>
+      <table className={styles.table}>
         <thead>
           <tr>
             <td>Название лиги</td>
@@ -69,13 +73,15 @@ const Competitions = ({
                   </Link>
                 </td>
                 <td>
-                  <span>{competition.area.name}</span>
-                  {competition.area.ensignUrl ? (
-                    <img className={styles.flag}
-                      src={competition.area.ensignUrl}
-                      alt={`flag of ${competition.area.name}`}
-                    />
-                  ) : null}
+                  <div className={styles.center}>
+                    <span>{competition.area.name}</span>
+                    {competition.area.ensignUrl ? (
+                      <img className={styles.flag}
+                        src={competition.area.ensignUrl}
+                        alt={`flag of ${competition.area.name}`}
+                      />
+                    ) : null}
+                  </div>
                 </td>
                 <td>{competition.currentSeason.startDate}</td>
                 <td>{competition.currentSeason.endDate}</td>

@@ -92,7 +92,7 @@ const Competition = ({
   const renderSidebar = () => {
     return (
       <div>
-        <ul>
+        <ul className='nav'>
           {seasons.map((year, index) => {
             return (
               <li key={index}>
@@ -109,7 +109,7 @@ const Competition = ({
 
   return (
     <div>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <form className={styles.formDate} onSubmit={(e) => handleSubmit(e)}>
         <input
           type="date"
           value={fromDate}

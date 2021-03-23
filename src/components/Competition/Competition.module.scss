@@ -1,4 +1,24 @@
 .flag {
-  width: 30px;
-  height: 30px;
+    width: 30px;
+    height: 30px;
+}
+
+.formDate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 0;
+    input {
+        margin: 0 4px 0 0;
+    }
+}
+
+.listYear {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    a {
+        margin-right: 8px;
+        color: #000;
+    }
 }
