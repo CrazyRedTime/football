@@ -55,17 +55,15 @@ const Competition = ({
     changeFromDate(
       queryString.parse(location.search).from
         ? queryString.parse(location.search).from
-        : selectedSeasonStartDate
+        : ''
     );
     changeToDate(
       queryString.parse(location.search).to
         ? queryString.parse(location.search).to
-        : selectedSeasonEndDate
+        : ''
     );
   }, [
     location.search,
-    selectedSeasonStartDate,
-    selectedSeasonEndDate,
     changeFromDate,
     changeToDate,
   ]);
@@ -114,13 +112,13 @@ const Competition = ({
           type="date"
           value={fromDate}
           min={selectedSeasonStartDate}
-          max={toDate}
+          max={toDate ? toDate : selectedSeasonEndDate}
           onChange={(e) => changeFromDate(e.target.value)}
         />
         <input
           type="date"
           value={toDate}
-          min={fromDate}
+          min={fromDate ? fromDate : selectedSeasonStartDate}
           max={selectedSeasonEndDate}
           onChange={(e) => changeToDate(e.target.value)}
         />
