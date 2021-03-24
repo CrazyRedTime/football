@@ -1,7 +1,7 @@
 import * as axios from 'axios';
 
 const template = axios.create({
-  baseURL: 'http://api.football-data.org/v2/',
+  baseURL: 'https://api.football-data.org/v2/',
   headers: {
     'X-Auth-Token': '10ad2d27ae9546648227d3674048f5b9',
   }
