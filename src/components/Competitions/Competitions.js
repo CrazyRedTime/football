@@ -21,13 +21,18 @@ const Competitions = ({
     fetchEuropianCompetitions();
   }, [fetchEuropianCompetitions]);
 
+  const [selectedSeason, changeSelectedSeason] = useState('');
+
   useEffect(() => {
     const search = queryString.parse(location.search);
     const season = search.season ? search.season : null;
     const searchPhrase = search.search ? search.search : '';
-    changeYear(season);
+    changeSelectedSeason(season);
+    if (season !== selectedSeason) {
+      changeYear(season);
+    }
     changeSearchValue(searchPhrase);
-  }, [location.search, changeYear]);
+  }, [location.search, changeYear, selectedSeason]);
 
   const [searchValue, changeSearchValue] = useState("");
 
