@@ -111,7 +111,6 @@ export const fetchSeasonMatches = (leagueId, year, dateFrom, dateTo) => async (d
 
 export const changeSeason = (year) => (dispatch) => {
   const newActiveYear = year;
-  console.log(year);
 
   dispatch({
     type: CHANGE_SEASON_IN_COMPETITION,
