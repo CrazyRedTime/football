@@ -27,7 +27,7 @@ const Team = ({ team, match, fetchTeam }) => {
           <h2>Вебсайт:</h2>
           <a href={team.website} target="_blank" rel="noreferrer">{team.website}</a>
         </div>
-        <div>
+        <div className={styles.activeCompetitions}>
           <h2>Участвует в лигах:</h2>
           <ul>
             {team.activeCompetitions ? team.activeCompetitions.map((competition, index) => {

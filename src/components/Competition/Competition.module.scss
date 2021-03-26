@@ -22,3 +22,34 @@
         color: #000;
     }
 }
+
+.season {
+    text-align: center;
+    h1 {
+        font-size: 24px;
+        margin: 0 0 16px 0;
+    }
+    h2 {
+        font-size: 18px;
+        margin: 0 0 16px 0;
+    }
+}
+
+.seasonDates {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    span {
+        margin-right: 14px;
+        font-weight: bold;
+    }
+}
+
+.teamtitle {
+    display: block;
+    margin-bottom: 24px;
+    color: #000;
+    &:hover {
+        text-decoration: none;
+    }
+}

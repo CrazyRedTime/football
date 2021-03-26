@@ -1,14 +1,49 @@
 .name {
-  font-size: 100px;
-  font-weight: bold;
+    font-size: 100px;
+    font-weight: bold;
+    margin-right: 10px;
 }
 
 .flag {
-  width: 150px;
-  height: 150px;
+    width: 150px;
+    height: 150px;
 }
 
 .title {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
+}
+
+.activeCompetitions {
+    ul {
+        padding-left: 20px;
+        margin: 0 0 24px 0;
+        list-style: square outside;
+        a {
+            color: #000;
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .name {
+        font-size: 40px;
+    }
+    .flag {
+        height: 100px;
+        width: 100px;
+    }
+}
+
+@media (max-width: 767px) {
+    .name {
+        font-size: 20px;
+    }
+    .flag {
+        height: 50px;
+        width: 50px;
+    }
 }

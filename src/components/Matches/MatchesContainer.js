@@ -166,9 +166,9 @@ const CompetitionMatches = ({
         <div className={styles.competitionTitle}>
           {renderSidebar()}
           <span className={styles.name}>{competition.name}</span>
-          <div>
-          <span>Начало сезона: {selectedSeasonStartDate}</span>
-          <span>Конец сезона: {selectedSeasonEndDate}</span>
+          <div className={styles.season}>
+            <span>Начало сезона: {selectedSeasonStartDate}</span>
+            <span>Конец сезона: {selectedSeasonEndDate}</span>
           </div>
         </div>
       )}
@@ -178,25 +178,33 @@ const CompetitionMatches = ({
           <img className={styles.flag} src={team.crestUrl} alt={team.name} />
         </div>
       )}
-      <form className={styles.formDate} onSubmit={(e) => handleSubmit(e)}>
-        <input
-          type="date"
-          value={fromDate}
-          min={fromMinValue}
-          max={fromMaxValue}
-          required
-          onChange={(e) => changeFromDate(e.target.value)}
-        />
-        <input
-          type="date"
-          value={toDate}
-          min={toMinValue}
-          max={toMaxValue}
-          required
-          onChange={(e) => changeToDate(e.target.value)}
-        />
-        <button>Показать</button>
-      </form>
+      <div className={styles.filter}>
+        <h3>фильтрация по дате</h3>
+        <form className={styles.formDate} onSubmit={(e) => handleSubmit(e)}>
+          <label for="date1">от</label>
+          <input
+            id='date1'
+            type="date"
+            value={fromDate}
+            min={fromMinValue}
+            max={fromMaxValue}
+            required
+            onChange={(e) => changeFromDate(e.target.value)}
+          />
+          <label for="date2">до</label>
+          <input
+            id='date2'
+            type="date"
+            value={toDate}
+            min={toMinValue}
+            max={toMaxValue}
+            required
+            onChange={(e) => changeToDate(e.target.value)}
+          />
+          <button>Показать</button>
+        </form>
+      </div>
+
       <Matches matches={matches} />
     </div>
   );

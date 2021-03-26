@@ -69,25 +69,21 @@ const Competition = ({
   };
 
   return (
-    <div>
+    <div className={styles.season}>
       {renderSidebar()}
-      <div><h1>{competition.name}</h1>
-      </div>
+      <h1>{competition.name}</h1>
       {selectedSeasonStartDate ? (
         currentSeasonStartDate === selectedSeasonStartDate ? (
-          <div>
             <h2>Текущий сезон</h2>
-          </div>
         ) : null
       ) : null}
       {selectedSeasonStartDate ? (
-        <div>
-          <span>Начало сезона: {selectedSeasonStartDate}</span>Конец сезона:{" "}
-          {selectedSeasonEndDate}
-          <span></span>
+        <div className={styles.seasonDates}>
+          <span>Начало сезона: {selectedSeasonStartDate}</span>
+          <span>Конец сезона: {selectedSeasonEndDate}</span>
         </div>
       ) : null}
-      <Link to={`/matches?competitionId=${competition.id}${currentSeason ? `&season=${currentSeason}` : ''}`}>{`Посмотреть матчи ${competition.name}`}</Link>
+      <Link className={styles.teamtitle} to={`/matches?competitionId=${competition.id}${currentSeason ? `&season=${currentSeason}` : ''}`}>{`Посмотреть матчи ${competition.name}`}</Link>
       <table>
         <thead>
           <tr>
