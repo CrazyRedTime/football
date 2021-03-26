@@ -113,3 +113,11 @@ export const getTeamFromState = (state) => {
 export const getTeamMatchesFromState = (state) => {
   return state.team.matches;
 };
+
+export const getCompetitionName = (state) => {
+  return state.competition.season.competition.name;
+};
+
+export const getCompetitionId = (state) => {
+  return state.competition.season.competition ? state.competition.season.competition.id : 0;
+};

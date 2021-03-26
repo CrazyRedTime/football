@@ -4,6 +4,7 @@ import Competitions from "./components/Competitions/Competitions";
 import Competition from "./components/Competition/Competition";
 import Team from "./components/Team/Team";
 import Header from "./components/Header/Header";
+import MatchesContainer from "./components/Matches/MatchesContainer";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/competitions" component={Competitions} />
         <Route path="/competition/:competitionId" component={Competition} />
         <Route path="/team/:teamId" component={Team} />
+        <Route path="/matches" component={MatchesContainer} />
       </Switch>
     </div>
   );

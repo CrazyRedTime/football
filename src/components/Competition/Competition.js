@@ -19,10 +19,8 @@ import {
   getSelectedSeasonMatches,
 } from "../../redux/selectors";
 import queryString from "query-string";
-import { useState } from "react";
-import { useHistory } from "react-router-dom";
-import Matches from "../Matches/Matches";
 import styles from './Competition.module.scss';
+import { useState } from "react";
 
 const Competition = ({
   competition,
@@ -31,61 +29,26 @@ const Competition = ({
   location,
   fetchCompetition,
   fetchSeason,
-  fetchSeasonMatches,
   teams,
   currentSeasonStartDate,
   selectedSeasonStartDate,
   selectedSeasonEndDate,
-  matches
 }) => {
   useEffect(() => {
     fetchCompetition(match.params.competitionId);
   }, [match.params.competitionId, fetchCompetition]);
+  
+  const [currentSeason, setCurrentSeason] = useState(null);
 
   useEffect(() => {
     const search = queryString.parse(location.search);
     const season = search.season ? search.season : null;
     fetchSeason(match.params.competitionId, season);
+    setCurrentSeason(season);
   }, [match.params.competitionId, location.search, fetchSeason]);
 
-  const [fromDate, changeFromDate] = useState("");
-  const [toDate, changeToDate] = useState("");
 
-  useEffect(() => {
-    changeFromDate(
-      queryString.parse(location.search).from
-        ? queryString.parse(location.search).from
-        : ''
-    );
-    changeToDate(
-      queryString.parse(location.search).to
-        ? queryString.parse(location.search).to
-        : ''
-    );
-  }, [
-    location.search,
-    changeFromDate,
-    changeToDate,
-  ]);
 
-  useEffect(() => {
-    const search = queryString.parse(location.search);
-    const season = search.season;
-    const from = search.from;
-    const to = search.to;
-    fetchSeasonMatches(match.params.competitionId, season, from, to);
-  }, [match.params.competitionId, location.search, fetchSeasonMatches]);
-
-  let history = useHistory();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const search = queryString.parse(location.search);
-    const season = search.season;
-    history.push(
-      `/competition/${competition.id}?season=${season}&from=${fromDate}&to=${toDate}`
-    );
-  };
 
   const renderSidebar = () => {
     return (
@@ -107,24 +70,9 @@ const Competition = ({
 
   return (
     <div>
-      <form className={styles.formDate} onSubmit={(e) => handleSubmit(e)}>
-        <input
-          type="date"
-          value={fromDate}
-          min={selectedSeasonStartDate}
-          max={toDate ? toDate : selectedSeasonEndDate}
-          onChange={(e) => changeFromDate(e.target.value)}
-        />
-        <input
-          type="date"
-          value={toDate}
-          min={fromDate ? fromDate : selectedSeasonStartDate}
-          max={selectedSeasonEndDate}
-          onChange={(e) => changeToDate(e.target.value)}
-        />
-        <button>Показать</button>
-      </form>
       {renderSidebar()}
+      <div><h1>{competition.name}</h1>
+      </div>
       {selectedSeasonStartDate ? (
         currentSeasonStartDate === selectedSeasonStartDate ? (
           <div>
@@ -139,6 +87,7 @@ const Competition = ({
           <span></span>
         </div>
       ) : null}
+      <Link to={`/matches?competitionId=${competition.id}${currentSeason ? `&season=${currentSeason}` : ''}`}>{`Посмотреть матчи ${competition.name}`}</Link>
       <table>
         <thead>
           <tr>
@@ -180,7 +129,6 @@ const Competition = ({
           })}
         </tbody>
       </table>
-      <Matches matches={matches} />
     </div>
   );
 };

@@ -7,7 +7,7 @@ const template = axios.create({
   }
 })
 
-const availableCompetitions = [2000,2001,2002,2003,2013,2014,2015,2016,2017,2018,2019,2021];
+export const availableCompetitions = [2000,2001,2002,2003,2013,2014,2015,2016,2017,2018,2019,2021];
 
 const getEuropianCompetitions = async () => {
   const response = await template.get(`competitions?areas=2077`);
@@ -25,7 +25,7 @@ const getSeason = async (leagueId, season) => {
 };
 
 const getSeasonMatches = async (leagueId, season, dateFrom, dateTo) => {
-  const response = await template.get(`/competitions/${leagueId}/matches${season ? `${`?season=${season}`}` : ''}${dateFrom ? `${`&dateFrom=${dateFrom}`}` : ''}${dateTo ? `${`&dateTo=${dateTo}`}` : ''}`);
+  const response = await template.get(`/competitions/${leagueId}/matches?${season ? `${`season=${season}`}` : ''}${dateFrom ? `${`&dateFrom=${dateFrom}`}` : ''}${dateTo ? `${`&dateTo=${dateTo}`}` : ''}`);
   return response.data.matches;
 };
 
@@ -35,8 +35,6 @@ const getTeam = async (teamId) => {
 }
 
 const getTeamMatches = async (teamId, from, to) => {
-  console.log(from);
-  console.log(to);
   const response = await template.get(`/teams/${teamId}/matches${from ? `?${`dateFrom=${from}&dateTo=${to}`}` : ''}`);
   return response.data.matches;
 };

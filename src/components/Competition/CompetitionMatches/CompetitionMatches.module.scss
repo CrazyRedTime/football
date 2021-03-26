@@ -1,5 +1,11 @@
-.winner {
-  background-color: #a6fc92;
+.formDate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 0;
+  input {
+      margin: 0 4px 0 0;
+  }
 }
 
 .formDate {
@@ -20,19 +26,4 @@
       margin-right: 8px;
       color: #000;
   }
-}
-
-.name {
-  font-size: 100px;
-  font-weight: bold;
-}
-
-.flag {
-  width: 150px;
-  height: 150px;
-}
-
-.title {
-  display: flex;
-  align-items: center;
 }
