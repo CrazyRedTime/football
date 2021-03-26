@@ -163,7 +163,8 @@ const CompetitionMatches = ({
   return (
     <div>
       {locationSearch.competitionId && (
-        <div className={styles.title}>
+        <div className={styles.competitionTitle}>
+          {renderSidebar()}
           <span className={styles.name}>{competition.name}</span>
           <div>
           <span>Начало сезона: {selectedSeasonStartDate}</span>
@@ -177,7 +178,6 @@ const CompetitionMatches = ({
           <img className={styles.flag} src={team.crestUrl} alt={team.name} />
         </div>
       )}
-      {locationSearch.competitionId ? renderSidebar() : null}
       <form className={styles.formDate} onSubmit={(e) => handleSubmit(e)}>
         <input
           type="date"
