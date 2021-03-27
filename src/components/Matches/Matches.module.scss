@@ -70,40 +70,44 @@
 }
 
 .nameContainer {
-  display: flex;
-  justify-content:  center;
+    display: flex;
+    justify-content: center;
 }
 
 .pagination {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    bottom: 5px;
+    transform: translate(-50%, 0px);
 }
 
 .paginationItem {
-  display: flex;
-  width: 25px;
-  height: 25px;
-  border: 1px solid black;
-  margin: 0 1px;
+    display: flex;
+    width: 25px;
+    height: 25px;
+    border: 1px solid black;
+    margin: 0 1px;
 }
 
 .paginationItem :hover {
-  background-color:#f0eee9;
-  color: #000;
+    background-color: #f0eee9;
+    color: #000;
 }
 
 .paginationLink {
-  width: 100%;
-  text-align: center;
-  text-decoration: none;
-  color: #000;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    color: #000;
 }
 
 .activeItem {
-  background-color: #000;
-  color: #fff
+    background-color: #000;
+    color: #fff
 }
- 
+
 @media (max-width: 1024px) {
     .name {
         font-size: 40px;
