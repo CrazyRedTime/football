@@ -165,7 +165,9 @@ const CompetitionMatches = ({
       {locationSearch.competitionId && (
         <div className={styles.competitionTitle}>
           {renderSidebar()}
+          <div className={styles.nameContainer}>
           <span className={styles.name}>{competition.name}</span>
+          </div>
           <div className={styles.season}>
             <span>Начало сезона: {selectedSeasonStartDate}</span>
             <span>Конец сезона: {selectedSeasonEndDate}</span>
@@ -181,9 +183,9 @@ const CompetitionMatches = ({
       <div className={styles.filter}>
         <h3>фильтрация по дате</h3>
         <form className={styles.formDate} onSubmit={(e) => handleSubmit(e)}>
-          <label for="date1">от</label>
+          <label htmlFor="dateFrom">от</label>
           <input
-            id='date1'
+            id='dateFrom'
             type="date"
             value={fromDate}
             min={fromMinValue}
@@ -191,9 +193,9 @@ const CompetitionMatches = ({
             required
             onChange={(e) => changeFromDate(e.target.value)}
           />
-          <label for="date2">до</label>
+          <label htmlFor="dateTo">до</label>
           <input
-            id='date2'
+            id='dateTo'
             type="date"
             value={toDate}
             min={toMinValue}

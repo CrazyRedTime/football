@@ -19,8 +19,8 @@ const Team = ({ team, match, fetchTeam }) => {
   return (
     <div>
       <div className={styles.title}>
-        <span className={styles.name}>{team.name}</span>
-        <img className={styles.flag} src={team.crestUrl} alt={team.name} />
+        <span className={styles.name}>{team.shortName}</span>
+        <img className={styles.flag} src={team.crestUrl} alt={team.shortName} />
       </div>
       <div>
         <div>
