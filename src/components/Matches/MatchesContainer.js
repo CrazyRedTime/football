@@ -176,7 +176,7 @@ const CompetitionMatches = ({
       )}
       {locationSearch.teamId && (
         <div className={styles.title}>
-          <span className={styles.name}>{team.name}</span>
+          <span className={styles.name}>{team.shortName}</span>
           <img className={styles.flag} src={team.crestUrl} alt={team.name} />
         </div>
       )}

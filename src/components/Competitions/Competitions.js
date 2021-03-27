@@ -9,6 +9,7 @@ import { Link, useHistory, withRouter } from "react-router-dom";
 import { compose } from "redux";
 import queryString from "query-string";
 import styles from "./Competitions.module.scss";
+import Nothing from "../Nothing/Nothing";
 
 const Competitions = ({
   competitions,
@@ -86,9 +87,7 @@ const Competitions = ({
     <div>
       {renderSidebar()}
       {searchValue && competitions.length &&!leagues.length ? (
-        <div className={styles.nothing}>
-          <h2>Ничего не найдено</h2>
-        </div>
+        <Nothing />
       ) : (
         <table className={styles.table}>
           <thead>

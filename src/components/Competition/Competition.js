@@ -21,6 +21,7 @@ import {
 import queryString from "query-string";
 import styles from "./Competition.module.scss";
 import { useState } from "react";
+import Nothing from "../Nothing/Nothing";
 
 const Competition = ({
   competition,
@@ -120,9 +121,7 @@ const Competition = ({
         }`}
       >{`Посмотреть матчи ${competition.name}`}</Link>
       {searchValue && teams.length && !filteredTeams.length ? (
-        <div className={styles.nothing}>
-          <h2>Ничего не найдено</h2>
-        </div>
+        <Nothing />
       ) : (
         <table>
           <thead>
