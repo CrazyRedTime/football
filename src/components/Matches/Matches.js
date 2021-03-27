@@ -6,6 +6,7 @@ import Pagination from "react-js-pagination";
 
 import styles from './Matches.module.scss';
 import { useEffect } from "react/cjs/react.development";
+import Nothing from '../Nothing/Nothing'
 
 const Matches = ({matches}) => {
 
@@ -14,7 +15,7 @@ const Matches = ({matches}) => {
 
   const [slice, setSlice] = useState([]);
 
-  const itemsPerPage = 13;
+  const itemsPerPage = 10;
 
   const changePage = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -24,6 +25,10 @@ const Matches = ({matches}) => {
   useEffect(() => {
     setSlice(matches.slice(offset, offset + itemsPerPage))
   }, [offset, matches])
+
+  if (!slice.length) {
+    return <Nothing />
+  }
 
   return (
     <div>

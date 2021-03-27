@@ -75,12 +75,15 @@
 }
 
 .pagination {
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    left: 50%;
-    bottom: 5px;
-    transform: translate(-50%, 0px);
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  bottom: 5px;
+  transform: translate(-50%, 0px);
+  background: #ffff;
+  padding: 10px;
+  border-radius: 4px;
 }
 
 .paginationItem {
