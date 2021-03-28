@@ -33,6 +33,7 @@ const Matches = ({matches}) => {
   return (
     <div>
       <h3>Матчи</h3>
+      <div className={styles.tableContainer}>
       <table>
         <thead>
           <tr>
@@ -59,6 +60,7 @@ const Matches = ({matches}) => {
           })}
         </tbody>
       </table>
+      </div>
       {matches.length > itemsPerPage && <Pagination
       innerClass={styles.pagination}
       activeLinkClass={styles.activeItem}

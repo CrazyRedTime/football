@@ -77,10 +77,6 @@
 .pagination {
   display: flex;
   justify-content: center;
-  position: absolute;
-  left: 50%;
-  bottom: 5px;
-  transform: translate(-50%, 0px);
   background: #ffff;
   padding: 10px;
   border-radius: 4px;
@@ -111,6 +107,10 @@
     color: #fff
 }
 
+.tableContainer {
+  min-height: 450px;
+}
+
 @media (max-width: 1024px) {
     .name {
         font-size: 40px;
@@ -118,6 +118,9 @@
     .flag {
         height: 100px;
         width: 100px;
+    }
+    .tableContainer {
+      min-height: 400px;
     }
 }
 
@@ -134,5 +137,8 @@
         input {
             margin: 10px 0;
         }
+    }
+    .tableContainer {
+      min-height: 200px;
     }
 }
