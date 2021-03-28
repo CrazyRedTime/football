@@ -19,6 +19,7 @@ const initialState = {
   },
   activeYear: null,
   matches: [],
+  matchesIsFetching: false
 };
 
 const competition = (state = initialState, { type, payload }) => {
@@ -35,10 +36,17 @@ const competition = (state = initialState, { type, payload }) => {
         season: { ...payload },
       };
 
+    case FETCH_SEASON_MATCHES_START:
+      return {
+        ...state,
+        matchesIsFetching: true
+      }
+
     case FETCH_SEASON_MATCHES_SUCCESS:
       return {
         ...state,
-        matches: [...payload]
+        matches: [...payload],
+        matchesIsFetching: false
       }
 
     case CHANGE_SEASON_IN_COMPETITION:

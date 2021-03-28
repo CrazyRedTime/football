@@ -14,6 +14,10 @@ export const getCompetitions = (state) => {
   return competitions;
 };
 
+export const getCompetitionsFetching = (state) => {
+  return state.competitions.isFetching
+};
+
 export const getCompetitionsYears = (state) => {
   const result = [];
   state.competitions.leagues.forEach((competition) => {
@@ -61,6 +65,10 @@ export const getCurrentCompetitionYears = (state) => {
     return 0;
   });
 };
+
+export const getCompetitionMatchtesFetching = (state) => {
+  return state.competition.matchesIsFetching;
+}
 
 export const getSelectedSeasonYear = (state) => {
   return state.competition.activeYear;
@@ -113,6 +121,10 @@ export const getTeamFromState = (state) => {
 export const getTeamMatchesFromState = (state) => {
   return state.team.matches;
 };
+
+export const getTeamMatchtesFetching = (state) => {
+  return state.team.matchesIsFetching;
+}
 
 export const getCompetitionName = (state) => {
   return state.competition.season.competition.name;

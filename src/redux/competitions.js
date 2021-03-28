@@ -4,15 +4,24 @@ import { CHANGE_YEAR_IN_COMPETITIONS, FETCH_COMPETITIONS_FAILURE, FETCH_COMPETIT
 
 const initialState = {
   leagues: [],
-  activeYear: null
+  activeYear: null,
+  isFetching: false
 };
 
 const competitions = (state = initialState, {type, payload}) => {
   switch (type) {
+
+    case FETCH_COMPETITIONS_START:
+      return {
+        ...state,
+        isFetching: true
+      }
+
     case FETCH_COMPETITIONS_SUCCESS:
       return {
         ...state,
-        leagues: [...payload]
+        leagues: [...payload],
+        isFetching: false
       }
 
     case CHANGE_YEAR_IN_COMPETITIONS:

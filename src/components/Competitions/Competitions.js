@@ -4,12 +4,13 @@ import {
   changeYear,
 } from "../../redux/competitions";
 import { useEffect, useState } from "react";
-import { getCompetitions, getCompetitionsYears } from "../../redux/selectors";
+import { getCompetitions, getCompetitionsFetching, getCompetitionsYears } from "../../redux/selectors";
 import { Link, useHistory, withRouter } from "react-router-dom";
 import { compose } from "redux";
 import queryString from "query-string";
 import styles from "./Competitions.module.scss";
 import Nothing from "../Nothing/Nothing";
+import Preloader from "../Preloader/Preloader";
 
 const Competitions = ({
   competitions,
@@ -17,6 +18,7 @@ const Competitions = ({
   fetchEuropianCompetitions,
   changeYear,
   location,
+  isFetching
 }) => {
   useEffect(() => {
     fetchEuropianCompetitions();
@@ -86,7 +88,7 @@ const Competitions = ({
   return (
     <div>
       {renderSidebar()}
-      {searchValue && competitions.length &&!leagues.length ? (
+      {isFetching ? <Preloader /> : (searchValue && competitions.length && !leagues.length) ? (
         <Nothing />
       ) : (
         <table className={styles.table}>
@@ -140,6 +142,7 @@ const Competitions = ({
           </tbody>
         </table>
       )}
+      
     </div>
   );
 };
@@ -148,6 +151,7 @@ const mapStateToProps = (state) => {
   return {
     competitions: getCompetitions(state),
     years: getCompetitionsYears(state),
+    isFetching: getCompetitionsFetching(state)
   };
 };
 

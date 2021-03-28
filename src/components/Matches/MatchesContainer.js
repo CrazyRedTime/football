@@ -18,8 +18,11 @@ import {
   getTeamMatchesFromState,
   getCompetitionId,
   getTeamFromState,
+  getCompetitionMatchtesFetching,
+  getTeamMatchtesFetching,
 } from "../../redux/selectors";
 import queryString from "query-string";
+import Preloader from '../Preloader/Preloader'
 
 import styles from "./Matches.module.scss";
 import Matches from "./Matches";
@@ -40,6 +43,8 @@ const CompetitionMatches = ({
   seasons,
   competitionId,
   team,
+  CMIsFetching,
+  TMIsFetching
 }) => {
   const [fromDate, changeFromDate] = useState("");
   const [toDate, changeToDate] = useState("");
@@ -206,8 +211,7 @@ const CompetitionMatches = ({
           <button>Показать</button>
         </form>
       </div>
-
-      <Matches matches={matches} />
+      {CMIsFetching || TMIsFetching ? <Preloader /> : <Matches matches={matches} />} 
     </div>
   );
 };
@@ -222,6 +226,8 @@ const mapStateToProps = (state) => {
     teamMatches: getTeamMatchesFromState(state),
     competitionId: getCompetitionId(state),
     team: getTeamFromState(state),
+    CMIsFetching: getCompetitionMatchtesFetching(state),
+    TMIsFetching: getTeamMatchtesFetching(state)
   };
 };
 

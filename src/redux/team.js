@@ -10,7 +10,8 @@ import {
 
 const initialState = {
   team: {},
-  matches: []
+  matches: [],
+  matchesIsFetching: false
 };
 
 const team = (state = initialState, { type, payload }) => {
@@ -22,10 +23,17 @@ const team = (state = initialState, { type, payload }) => {
         team: {...payload}
       }
 
+    case FETCH_TEAM_MATCHES_START:
+      return {
+        ...state,
+        matchesIsFetching: true
+      }
+
     case FETCH_TEAM_MATCHES_SUCCESS:
       return {
         ...state,
-        matches: [...payload]
+        matches: [...payload],
+        matchesIsFetching: false
       };
 
     default:
